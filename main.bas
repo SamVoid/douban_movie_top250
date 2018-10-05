@@ -89,7 +89,7 @@ Sub List_head()
     Columns("G:G").ColumnWidth = 7
     Columns("F:F").ColumnWidth = 49
     Columns("E:E").ColumnWidth = 66
-    Columns("D:D").ColumnWidth = 62        
+    Columns("D:D").ColumnWidth = 24        
     Columns("C:C").ColumnWidth = 29
     Columns("B:B").ColumnWidth = 15
     Columns("A:A").ColumnWidth = 25
