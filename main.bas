@@ -22,7 +22,7 @@ With CreateObject("WinHttp.WinHttpRequest.5.1")
 '    Range("a255").Resize(25, 1) = Application.Transpose(arrRow)
        For n = 1 To 25
        Cells(n + 1, 1).Value = Split(arrRow(n), """")(3)
-       Cells(n + 1, 2).Value = Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), " ")(28), "&")(0)
+       Cells(n + 1, 2).Value = left(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), " ")(28), "&")(0),4)
        Cells(n + 1, 3).Value = Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(2), "&")(0)
        Cells(n + 1, 4).Value = Left(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(4), "<")(0), Len(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(4), "<")(0)) - 25)
        Cells(n + 1, 5).Value = Left(Split(Split(arrRow(n), "导演: ")(1), "&")(0), 50)
@@ -47,7 +47,7 @@ With CreateObject("WinHttp.WinHttpRequest.5.1")
       arrRow = Split(strText, "<img width=")
        For n = 1 To 25
        Cells(n + nm + 1, 1).Value = Split(arrRow(n), """")(3)
-       Cells(n + nm + 1, 2).Value = Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), " ")(28), "&")(0)
+       Cells(n + nm + 1, 2).Value = left(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), " ")(28), "&")(0),4)
        Cells(n + nm + 1, 3).Value = Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(2), "&")(0)
        Cells(n + nm + 1, 4).Value = Left(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(4), "<")(0), Len(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(4), "<")(0)) - 25)
        Cells(n + nm + 1, 5).Value = Left(Split(Split(arrRow(n), "导演: ")(1), "&")(0), 50)
@@ -91,7 +91,7 @@ Sub List_head()
     Columns("E:E").ColumnWidth = 66
     Columns("D:D").ColumnWidth = 24        
     Columns("C:C").ColumnWidth = 29
-    Columns("B:B").ColumnWidth = 15
+    Columns("B:B").ColumnWidth = 9
     Columns("A:A").ColumnWidth = 25
     Range("A1:I251").Select
     With Selection.Font
