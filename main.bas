@@ -24,11 +24,12 @@ With CreateObject("WinHttp.WinHttpRequest.5.1")
        Cells(n + 1, 1).Value = Split(arrRow(n), """")(3)
        Cells(n + 1, 2).Value = Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), " ")(28), "&")(0)
        Cells(n + 1, 3).Value = Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(2), "&")(0)
-       Cells(n + 1, 4).Value = Left(Split(Split(arrRow(n), "导演: ")(1), "&")(0), 50)
-       Cells(n + 1, 5).Value = Split(Split(Split(arrRow(n), "导演: ")(1), "主演: ")(1), "<")(0)
-       Cells(n + 1, 6).Value = Split(Split(Split(arrRow(n), "v:average")(1), ">")(1), "<")(0)
-       Cells(n + 1, 7).Value = Split(Split(Split(Split(arrRow(n), "v:average")(1), ">")(5), "<")(0), "人")(0)
-       Cells(n + 1, 8).Value = Split(arrRow(n), """")(13)
+       Cells(n + 1, 4).Value = Left(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(4), "<")(0), Len(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(4), "<")(0)) - 25)
+       Cells(n + 1, 5).Value = Left(Split(Split(arrRow(n), "导演: ")(1), "&")(0), 50)
+       Cells(n + 1, 6).Value = Split(Split(Split(arrRow(n), "导演: ")(1), "主演: ")(1), "<")(0)
+       Cells(n + 1, 7).Value = Split(Split(Split(arrRow(n), "v:average")(1), ">")(1), "<")(0)
+       Cells(n + 1, 8).Value = Split(Split(Split(Split(arrRow(n), "v:average")(1), ">")(5), "<")(0), "人")(0)
+       Cells(n + 1, 9).Value = Split(arrRow(n), """")(13)
        Next
       
   For nm = 25 To 225 Step 25
@@ -48,11 +49,12 @@ With CreateObject("WinHttp.WinHttpRequest.5.1")
        Cells(n + nm + 1, 1).Value = Split(arrRow(n), """")(3)
        Cells(n + nm + 1, 2).Value = Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), " ")(28), "&")(0)
        Cells(n + nm + 1, 3).Value = Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(2), "&")(0)
-       Cells(n + nm + 1, 4).Value = Left(Split(Split(arrRow(n), "导演: ")(1), "&")(0), 50)
-       Cells(n + nm + 1, 5).Value = Split(Split(Split(arrRow(n), "导演: ")(1), "主演: ")(1), "<")(0)
-       Cells(n + nm + 1, 6).Value = Split(Split(Split(arrRow(n), "v:average")(1), ">")(1), "<")(0)
-       Cells(n + nm + 1, 7).Value = Split(Split(Split(Split(arrRow(n), "v:average")(1), ">")(5), "<")(0), "人")(0)
-       Cells(n + nm + 1, 8).Value = Split(arrRow(n), """")(13)
+       Cells(n + nm + 1, 4).Value = Left(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(4), "<")(0), Len(Split(Split(Split(Split(arrRow(n), "导演: ")(1), ">")(1), ";")(4), "<")(0)) - 25)
+       Cells(n + nm + 1, 5).Value = Left(Split(Split(arrRow(n), "导演: ")(1), "&")(0), 50)
+       Cells(n + nm + 1, 6).Value = Split(Split(Split(arrRow(n), "导演: ")(1), "主演: ")(1), "<")(0)
+       Cells(n + nm + 1, 7).Value = Split(Split(Split(arrRow(n), "v:average")(1), ">")(1), "<")(0)
+       Cells(n + nm + 1, 8).Value = Split(Split(Split(Split(arrRow(n), "v:average")(1), ">")(5), "<")(0), "人")(0)
+       Cells(n + nm + 1, 9).Value = Split(arrRow(n), """")(13)
        Next
         
     Next
@@ -69,26 +71,29 @@ Sub List_head()
     Range("C1").Select
     ActiveCell.FormulaR1C1 = "国家"
     Range("D1").Select
-    ActiveCell.FormulaR1C1 = "导演"
+    ActiveCell.FormulaR1C1 = "类型"
     Range("E1").Select
-    ActiveCell.FormulaR1C1 = "主演"
+    ActiveCell.FormulaR1C1 = "导演"
     Range("F1").Select
-    ActiveCell.FormulaR1C1 = "评分"
+    ActiveCell.FormulaR1C1 = "主演"
     Range("G1").Select
-    ActiveCell.FormulaR1C1 = "评分人数"
+    ActiveCell.FormulaR1C1 = "评分"
     Range("H1").Select
+    ActiveCell.FormulaR1C1 = "评分人数"
+    Range("I1").Select
     ActiveCell.FormulaR1C1 = "豆瓣地址"
-    Range("A1:H1").Select
+    Range("A1:I1").Select
     Selection.Font.Bold = True
-    Columns("G:G").ColumnWidth = 11
-    Columns("H:H").ColumnWidth = 47
-    Columns("F:F").ColumnWidth = 7
-    Columns("E:E").ColumnWidth = 49
-    Columns("D:D").ColumnWidth = 66
+    Columns("H:H").ColumnWidth = 11
+    Columns("I:I").ColumnWidth = 47
+    Columns("G:G").ColumnWidth = 7
+    Columns("F:F").ColumnWidth = 49
+    Columns("E:E").ColumnWidth = 66
+    Columns("D:D").ColumnWidth = 62        
     Columns("C:C").ColumnWidth = 29
     Columns("B:B").ColumnWidth = 15
     Columns("A:A").ColumnWidth = 25
-    Range("A1:H251").Select
+    Range("A1:I251").Select
     With Selection.Font
         .Name = "微软雅黑"
         .Strikethrough = False
@@ -134,7 +139,7 @@ Sub List_head()
         .ReadingOrder = xlContext
         .MergeCells = False
     End With
-    Range("A1:H1").Select
+    Range("A1:I1").Select
     With Selection.Font
         .Name = "微软雅黑"
         .Size = 14
@@ -149,7 +154,7 @@ Sub List_head()
         .ThemeFont = xlThemeFontNone
     End With
     Range("A1").Select
-        Range("A1:H251").Select
+        Range("A1:I251").Select
     Selection.Borders(xlDiagonalDown).LineStyle = xlNone
     Selection.Borders(xlDiagonalUp).LineStyle = xlNone
     With Selection.Borders(xlEdgeLeft)
